@@ -65,6 +65,8 @@ h1.title {
     font-size: 25px;
     font-weight: bold;
     width: 3em;
+    height: 1em;
+    padding: 0;
 }
 .game-size,
 .best-container,
@@ -515,7 +517,7 @@ hr {
 }
 .above-game,
 .heading {
-    max-width: 500px;
+    max-width: 300px;
     margin: 0 auto;
 }
 .game-container {
