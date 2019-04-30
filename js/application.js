@@ -3,7 +3,9 @@ window.requestAnimationFrame(function () {
     let size = document.getElementById("game-size"),
         style = document.getElementsByTagName("style")[0],
         con = document.getElementsByClassName("game-container")[0],
-        value = size.value,
+        value = (isNaN(Number(size.value)) === true)
+            ? 4
+            : Number(size.value),
         load = false,
         resize = function () {
             let body = document.getElementsByTagName("body")[0],
@@ -20,7 +22,7 @@ window.requestAnimationFrame(function () {
                     totalwidth = (width > height)
                         ? (height - 100) / 10
                         : (width - 100) / 10,
-                    col = totalwidth / 45,
+                    col = totalwidth / ((value * 10) + (value + 1)),
                     row = {},
                     cell = {},
                     gc = document.getElementsByClassName("grid-container")[0],
