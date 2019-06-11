@@ -59,14 +59,15 @@ h1.title {
     top: -100em;
 }
 .game-size input {
-    background-color: inherit;
+    background-color: #faf8ef;
+    border-radius: 3px;
     border-style: none;
-    color: #fff;
+    color: #776e65;
     font-size: 25px;
     font-weight: bold;
     width: 3em;
     height: 1em;
-    padding: 0;
+    padding: 0 0.2em;
 }
 .game-size,
 .best-container,

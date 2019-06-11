@@ -3,7 +3,9 @@ window.requestAnimationFrame(function () {
     let size = document.getElementById("game-size"),
         style = document.getElementsByTagName("style")[0],
         con = document.getElementsByClassName("game-container")[0],
-        value = size.value,
+        value = (isNaN(size.value) === true)
+            ? 4
+            : Math.floor(Number(size.value)),
         load = false,
         resize = function () {
             let body = document.getElementsByTagName("body")[0],
@@ -20,7 +22,7 @@ window.requestAnimationFrame(function () {
                     totalwidth = (width > height)
                         ? (height - 100) / 10
                         : (width - 100) / 10,
-                    col = totalwidth / 45,
+                    col = totalwidth / ((value * 10) + (value + 1)),
                     row = {},
                     cell = {},
                     gc = document.getElementsByClassName("grid-container")[0],
@@ -61,9 +63,9 @@ window.requestAnimationFrame(function () {
                 style.innerHTML = styles.join("");
             }
         };
-    if (localStorage.size !== undefined) {
-        value = localStorage.size;
-        size.value = value;
+    if (localStorage.size !== undefined && isNaN(localStorage.size) === false) {
+        value = Math.floor(Number(localStorage.size));
+        size.value = localStorage.size;
     }
     size.onblur = function () {
         if (size.value !== String(value) && isNaN(size.value) === false) {
@@ -72,11 +74,6 @@ window.requestAnimationFrame(function () {
             location.reload();
         }
     };
-    if (isNaN(value) === true || value < 2) {
-        value = 4;
-    } else {
-        value = Number(value);
-    }
     window.onresize = resize;
     resize();
     load = true;
